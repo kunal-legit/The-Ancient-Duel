@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int snakeWaterGun(char you, char comp) {
+    // Cases covered:
+    // ss ws gs ls
+    // sw wg gl lw
+    // sg wl gr lr
+
+    if (you == comp) {
+        return 0; // Game draw
+    } else if ((you == 's' && comp == 'w') || (you == 'w' && comp == 'g') || (you == 'g' && comp == 's')) {
+        return 1; // You win
+    } else {
+        return -1; // You lose
+    }
+}
+
+int main() {
+    char you, comp;
+
+    comp = 's'; // Computer chooses 's' for snake
+
+    printf("Enter 's' for snake, 'w' for water and 'g' for gun:\n");
+    scanf("%c", &you);
+
+    int result = snakeWaterGun(you, comp);
+
+    printf("You chose %c and computer chose %c. ", you, comp);
+
+    if (result == 0) {
+        printf("Game draw!\n");
+    } else if (result == 1) {
+        printf("You win!\n");
+    } else {
+        printf("You Lose!\n");
+    }
+
+    return 0;
+}
